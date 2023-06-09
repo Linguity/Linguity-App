@@ -1,18 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:paddingHorizontal="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="100dp"
+        android:clipToPadding="false">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_hello"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hello"
+            android:fontFamily="@font/poppins"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/username"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tv_hello"
+            app:layout_constraintTop_toBottomOf="@+id/tv_hello" />
+
+        <ImageButton
+            android:id="@+id/btn_logout"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/round_logout_24"
+            android:background="@null"
+            android:contentDescription="@string/logout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_english_learning"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginTop="28dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_username">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_english_learning"
+                    android:layout_width="140dp"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="20dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/img_english_learning"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="16dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/english_learning"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_english_learning"
+                    app:layout_constraintStart_toStartOf="@+id/iv_english_learning"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_english_learning" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_choose_your_checker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="24dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/choose_your_checker"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/cv_english_learning"
+            app:layout_constraintTop_toBottomOf="@+id/cv_english_learning" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_pronunciation"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:layout_marginVertical="20dp"
+            android:layout_marginEnd="8dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_center"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_choose_your_checker">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_pronunciation_checker"
+                    android:layout_width="140dp"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="20dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/img_pronunciation_checker"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="16dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/pronunciation_checker"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_pronunciation_checker"
+                    app:layout_constraintStart_toStartOf="@+id/iv_pronunciation_checker"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_pronunciation_checker" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_spelling"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:layout_marginVertical="20dp"
+            android:layout_marginStart="8dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="@+id/guideline_center"
+            app:layout_constraintTop_toBottomOf="@+id/tv_choose_your_checker">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_spelling_quiz"
+                    android:layout_width="140dp"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="20dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/img_spelling_quiz"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="16dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/spelling_quiz"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_spelling_quiz"
+                    app:layout_constraintStart_toStartOf="@+id/iv_spelling_quiz"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_spelling_quiz" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

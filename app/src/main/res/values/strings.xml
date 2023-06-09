@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Linguity</string>
+    <string name="hello">Hello,</string>
+    <string name="username">Username</string>
+    <string name="logout">LogOut</string>
+    <string name="english_learning">English Learning</string>
+    <string name="choose_your_checker">Choose your checker</string>
+    <string name="pronunciation_checker">Pronunciation\n Checker</string>
+    <string name="spelling_quiz">Spelling Quiz</string>
 </resources>
