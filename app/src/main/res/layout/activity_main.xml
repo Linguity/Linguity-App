@@ -9,17 +9,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clipToPadding="false"
         android:paddingHorizontal="16dp"
         android:paddingTop="20dp"
-        android:paddingBottom="100dp"
-        android:clipToPadding="false">
+        android:paddingBottom="100dp">
 
         <TextView
             android:id="@+id/tv_hello"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hello"
             android:fontFamily="@font/poppins"
+            android:text="@string/hello"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -39,9 +39,9 @@
             android:id="@+id/btn_logout"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/round_logout_24"
             android:background="@null"
             android:contentDescription="@string/logout"
+            android:src="@drawable/round_logout_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,10 +50,10 @@
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_marginTop="28dp"
-            android:foreground="?android:attr/selectableItemBackground"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             app:cardCornerRadius="10dp"
             app:cardElevation="16dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -108,9 +108,9 @@
             android:layout_height="250dp"
             android:layout_marginVertical="20dp"
             android:layout_marginEnd="8dp"
-            android:foreground="?android:attr/selectableItemBackground"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             app:cardCornerRadius="10dp"
             app:cardElevation="16dp"
             app:layout_constraintEnd_toStartOf="@+id/guideline_center"
@@ -155,9 +155,9 @@
             android:layout_height="250dp"
             android:layout_marginVertical="20dp"
             android:layout_marginStart="8dp"
-            android:foreground="?android:attr/selectableItemBackground"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             app:cardCornerRadius="10dp"
             app:cardElevation="16dp"
             app:layout_constraintEnd_toEndOf="parent"

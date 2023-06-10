@@ -1,17 +1,16 @@
-package com.linguity.app.ui.login
+package com.linguity.app.ui.register
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.linguity.app.databinding.ActivityLoginBinding
+import com.linguity.app.databinding.ActivityRegisterBinding
 
-class LoginActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
     private val binding by lazy {
-        ActivityLoginBinding.inflate(layoutInflater)
+        ActivityRegisterBinding.inflate(layoutInflater)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-
     }
 }
