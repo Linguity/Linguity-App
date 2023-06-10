@@ -7,4 +7,8 @@
     <string name="choose_your_checker">Choose your checker</string>
     <string name="pronunciation_checker">Pronunciation\n Checker</string>
     <string name="spelling_quiz">Spelling Quiz</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_in_question">Do you have an account?</string>
 </resources>
