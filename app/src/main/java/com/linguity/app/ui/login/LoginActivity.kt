@@ -11,6 +11,7 @@ import androidx.core.text.toSpannable
 import com.linguity.app.R
 import com.linguity.app.databinding.ActivityLoginBinding
 import com.linguity.app.helper.ViewModelFactory
+import com.linguity.app.ui.main.MainActivity
 import com.linguity.app.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -34,6 +35,21 @@ class LoginActivity : AppCompatActivity() {
         viewModel.toastText.observe(this) {
             showToast(it)
         }
+
+        viewModel.isSucceed.observe(this) { isSucceed ->
+            if (isSucceed) {
+                Intent(this, MainActivity::class.java).also {
+                    startActivity(it)
+                }
+
+                this.finish()
+            } else {
+                binding.apply {
+                    edLoginEmail.text?.clear()
+                    edLoginPassword.text?.clear()
+                }
+            }
+        }
     }
 
     private fun setComponentsOnClickListener() {
@@ -42,7 +58,11 @@ class LoginActivity : AppCompatActivity() {
                 val email = edLoginEmail.text.toString()
                 val password = edLoginPassword.text.toString()
 
-                viewModel.login(email, password)
+                if (email.isNotEmpty() && password.isNotEmpty()) {
+                    viewModel.login(email, password)
+                } else {
+                    showToast("All fields must be filled.")
+                }
             }
 
             tvClickableToRegister.apply {
