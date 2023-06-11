@@ -8,11 +8,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ApiConfig {
 
     fun getApiService(): ApiService {
-        // TODO: tambahkan baseurl
-        val baseUrl = ""
+        val baseUrl = "https://linguityapi-djq5jpbe4a-et.a.run.app/"
         val loggingInterceptor =
-            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
-
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
         val client = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)

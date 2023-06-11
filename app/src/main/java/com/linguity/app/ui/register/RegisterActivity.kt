@@ -31,6 +31,18 @@ class RegisterActivity : AppCompatActivity() {
         viewModel.toastText.observe(this) {
             showToast(it)
         }
+
+        viewModel.isSucceed.observe(this) { isSucceed ->
+            if (isSucceed) {
+                this.finish()
+            } else {
+                binding.apply {
+                    edRegisterEmail.text?.clear()
+                    edRegisterName.text?.clear()
+                    edRegisterPassword.text?.clear()
+                }
+            }
+        }
     }
 
     private fun setComponentsOnClickListener() {
@@ -40,7 +52,11 @@ class RegisterActivity : AppCompatActivity() {
                 val email = edRegisterEmail.text.toString()
                 val password = edRegisterPassword.text.toString()
 
-                viewModel.register(name, email, password)
+                if (name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
+                    viewModel.register(name, email, password)
+                } else {
+                    showToast("All fields must be filled.")
+                }
             }
 
             tvClickableToLogin.apply {
