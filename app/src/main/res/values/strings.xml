@@ -7,4 +7,13 @@
     <string name="choose_your_checker">Choose your checker</string>
     <string name="pronunciation_checker">Pronunciation\n Checker</string>
     <string name="spelling_quiz">Spelling Quiz</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_in_question">Do you have an account?</string>
+    <string name="name">Name</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_up_question">Already have an account?</string>
+    <string name="register_now">Register Now</string>
+    <string name="login_here">Login here</string>
 </resources>
