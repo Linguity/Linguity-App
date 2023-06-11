@@ -3,6 +3,9 @@
     <style name="Base.Theme.Linguity" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">#5E5873</item>
+        <item name="colorSecondary">#8E84B3</item>
+        <item name="colorControlNormal">?colorPrimary</item>
     </style>
 
     <style name="Theme.Linguity" parent="Base.Theme.Linguity" />
