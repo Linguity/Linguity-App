@@ -9,4 +9,20 @@
     </style>
 
     <style name="Theme.Linguity" parent="Base.Theme.Linguity" />
+
+    <style name="Theme.Linguity.ActionBar" parent="Theme.Material3.DayNight">
+        <item name="colorPrimary">#5E5873</item>
+        <item name="colorPrimaryVariant">@color/linguity_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorControlNormal">?colorPrimary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#8E84B3</item>
+        <item name="colorSecondaryVariant">@color/white</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:statusBarColor">@color/linguity_primary</item>
+        <item name="android:actionBarStyle">@color/white</item>
+        <!-- styling -->
+        <item name="android:textViewStyle">@font/poppins</item>
+        <item name="buttonStyle">@font/poppins</item>
+    </style>
 </resources>

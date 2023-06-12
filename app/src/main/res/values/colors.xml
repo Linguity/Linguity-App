@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="linguity_primary">#5E5873</color>
+    <color name="linguity_secondary">#F5B4B4</color>
+    <color name="linguity_alternative_1">#CCAC5F</color>
+    <color name="linguity_alternative_2">#809558</color>
+    <color name="linguity_disable">#D9D9D9</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="dark_teal">#2A7F89</color>
