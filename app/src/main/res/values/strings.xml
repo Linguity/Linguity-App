@@ -4,9 +4,16 @@
     <string name="username">Username</string>
     <string name="logout">LogOut</string>
     <string name="english_learning">English Learning</string>
+    <string name="english_learning_page_title">English Learning</string>
     <string name="choose_your_checker">Choose your checker</string>
     <string name="pronunciation_checker">Pronunciation\n Checker</string>
+    <string name="pronunciation_page_title">Pronunciation Exercise</string>
+    <string name="pronunciation_level">Choose your level</string>
+    <string name="pronunciation_word">Choose your word</string>
     <string name="spelling_quiz">Spelling Quiz</string>
+    <string name="spelling_quiz_page_title">Spelling Exercise</string>
+    <string name="spelling_quiz_level">Choose your level</string>
+    <string name="spelling_quiz_word">Choose your word</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="sign_in">Sign In</string>
