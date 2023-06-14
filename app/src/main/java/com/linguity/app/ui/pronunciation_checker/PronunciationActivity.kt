@@ -16,7 +16,7 @@ class PronunciationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        var stringAB: String = resources.getString(R.string.pronunciation_page_title)
+        val stringAB: String = resources.getString(R.string.pronunciation_page_title)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = stringAB
         setNavigation()
@@ -27,7 +27,7 @@ class PronunciationActivity : AppCompatActivity() {
         return true
     }
 
-    private fun setNavigation(){
+    private fun setNavigation() {
         binding.apply {
             cvPBeginner.setOnClickListener {
                 Intent(this@PronunciationActivity, PronunciationListActivity::class.java).also {

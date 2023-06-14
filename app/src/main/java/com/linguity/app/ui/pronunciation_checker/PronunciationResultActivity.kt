@@ -1,7 +1,7 @@
 package com.linguity.app.ui.pronunciation_checker
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.linguity.app.R
 
 class PronunciationResultActivity : AppCompatActivity() {

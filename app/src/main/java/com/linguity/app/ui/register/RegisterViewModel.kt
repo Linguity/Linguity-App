@@ -13,11 +13,14 @@ import retrofit2.Response
 class RegisterViewModel(private val repository: Repository) : ViewModel() {
     private val _toastText = MutableLiveData<String>()
     private val _isSucceed = MutableLiveData<Boolean>()
+    private val _isLoading = MutableLiveData<Boolean>()
 
     val toastText: LiveData<String> = _toastText
     val isSucceed: LiveData<Boolean> = _isSucceed
+    val isLoading: LiveData<Boolean> = _isLoading
 
     fun register(name: String, email: String, password: String) {
+        _isLoading.value = true
         val request = RegisterRequest(name, email, password)
         repository.register(request)
             .enqueue(object : Callback<ResponseRegister> {
@@ -29,16 +32,20 @@ class RegisterViewModel(private val repository: Repository) : ViewModel() {
                     if (response.isSuccessful) {
                         responseBody?.msg.let {
                             _toastText.value = it
+
                         }
                         _isSucceed.value = true
+                        _isLoading.value = false
                     } else {
                         _toastText.value = "Failed: ${responseBody?.msg}"
+                        _isLoading.value = false
                     }
 
                 }
 
                 override fun onFailure(call: Call<ResponseRegister>, t: Throwable) {
                     _toastText.value = "Failed: ${t.message}"
+                    _isLoading.value = false
                 }
             })
     }

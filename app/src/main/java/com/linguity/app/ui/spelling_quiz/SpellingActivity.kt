@@ -16,7 +16,7 @@ class SpellingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        var stringAB: String = resources.getString(R.string.spelling_quiz_page_title)
+        val stringAB: String = resources.getString(R.string.spelling_quiz_page_title)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = stringAB
 
@@ -28,7 +28,7 @@ class SpellingActivity : AppCompatActivity() {
         return true
     }
 
-    private fun setNavigation(){
+    private fun setNavigation() {
         binding.apply {
             cvSBeginner.setOnClickListener {
                 Intent(this@SpellingActivity, SpellingListActivity::class.java).also {

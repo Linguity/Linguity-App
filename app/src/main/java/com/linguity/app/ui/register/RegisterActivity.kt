@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.toSpannable
+import androidx.core.view.isVisible
 import com.linguity.app.R
 import com.linguity.app.databinding.ActivityRegisterBinding
 import com.linguity.app.helper.ViewModelFactory
@@ -16,7 +17,7 @@ class RegisterActivity : AppCompatActivity() {
         ActivityRegisterBinding.inflate(layoutInflater)
     }
     private val viewModel: RegisterViewModel by viewModels {
-        ViewModelFactory()
+        ViewModelFactory(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +43,9 @@ class RegisterActivity : AppCompatActivity() {
                     edRegisterPassword.text?.clear()
                 }
             }
+        }
+        viewModel.isLoading.observe(this) {
+            binding.cvLoading.isVisible = it
         }
     }
 

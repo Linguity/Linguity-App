@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.toSpannable
+import androidx.core.view.isVisible
 import com.linguity.app.R
 import com.linguity.app.databinding.ActivityLoginBinding
 import com.linguity.app.helper.ViewModelFactory
@@ -20,7 +21,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private val viewModel: LoginViewModel by viewModels {
-        ViewModelFactory()
+        ViewModelFactory(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +40,14 @@ class LoginActivity : AppCompatActivity() {
         viewModel.isSucceed.observe(this) { isSucceed ->
             if (isSucceed) {
                 Intent(this, MainActivity::class.java).also {
+                    val username = binding.edLoginEmail.text.toString()
+
+                    it.putExtra(
+                        "userName",
+                        username
+                    )
+                    viewModel.saveSignedInUserName(username)
+
                     startActivity(it)
                 }
 
@@ -49,6 +58,10 @@ class LoginActivity : AppCompatActivity() {
                     edLoginPassword.text?.clear()
                 }
             }
+        }
+
+        viewModel.isLoading.observe(this) {
+            binding.cvLoading.isVisible = it
         }
     }
 

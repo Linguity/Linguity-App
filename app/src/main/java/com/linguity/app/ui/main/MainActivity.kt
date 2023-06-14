@@ -3,10 +3,12 @@ package com.linguity.app.ui.main
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.linguity.app.databinding.ActivityMainBinding
+import com.linguity.app.helper.ViewModelFactory
 import com.linguity.app.ui.english_learning.EnglishLearningActivity
+import com.linguity.app.ui.login.LoginActivity
 import com.linguity.app.ui.pronunciation_checker.PronunciationActivity
 import com.linguity.app.ui.spelling_quiz.SpellingActivity
 
@@ -14,19 +16,33 @@ class MainActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
-    private lateinit var viewModel: MainViewModel
+    private val viewModel: MainViewModel by viewModels {
+        ViewModelFactory(this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        val userName = intent.getStringExtra("userName")
 
-        binding.btnLogout.setOnClickListener {
-            viewModel.logout()
-        }
+        binding.tvUsername.text = userName
 
+        setComponentsOnClickListener()
         setNavigation()
         observeViewModel()
+    }
+
+    private fun setComponentsOnClickListener() {
+        binding.btnLogout.setOnClickListener {
+            viewModel.logout()
+
+            Intent(this, LoginActivity::class.java).also {
+                startActivity(it)
+            }
+
+            finish()
+        }
     }
 
     private fun observeViewModel() {
