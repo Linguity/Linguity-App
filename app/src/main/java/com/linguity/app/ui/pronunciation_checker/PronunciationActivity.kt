@@ -31,10 +31,26 @@ class PronunciationActivity : AppCompatActivity() {
         binding.apply {
             cvPBeginner.setOnClickListener {
                 Intent(this@PronunciationActivity, PronunciationListActivity::class.java).also {
+                    it.putExtra(LEVEL_EXTRA, "beginner")
+                    startActivity(it)
+                }
+            }
+            cvPIntermediate.setOnClickListener {
+                Intent(this@PronunciationActivity, PronunciationListActivity::class.java).also {
+                    it.putExtra(LEVEL_EXTRA, "intermediate")
+                    startActivity(it)
+                }
+            }
+            cvPAdvance.setOnClickListener {
+                Intent(this@PronunciationActivity, PronunciationListActivity::class.java).also {
+                    it.putExtra(LEVEL_EXTRA, "advanced")
                     startActivity(it)
                 }
             }
         }
     }
 
+    companion object {
+        private const val LEVEL_EXTRA = "level"
+    }
 }

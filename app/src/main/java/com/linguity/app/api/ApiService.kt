@@ -4,7 +4,7 @@ import com.linguity.app.api.requests.LoginRequest
 import com.linguity.app.api.requests.RegisterRequest
 import com.linguity.app.api.responses.ResponseLogin
 import com.linguity.app.api.responses.ResponseRegister
-import com.linguity.app.api.responses.ResponseSpelling
+import com.linguity.app.api.responses.ResponseQuizList
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -25,5 +25,10 @@ interface ApiService {
     @GET("spellingListByLevel/{level}")
     fun getSpellingListByLevel(
         @Path("level") level: String
-    ): Call<ResponseSpelling>
+    ): Call<ResponseQuizList>
+
+    @GET("pronunciationListByLevel/{level}")
+    fun getPronunciationListByLevel(
+        @Path("level") level: String
+    ): Call<ResponseQuizList>
 }

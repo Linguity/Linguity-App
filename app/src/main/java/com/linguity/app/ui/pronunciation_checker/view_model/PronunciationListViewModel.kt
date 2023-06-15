@@ -1,4 +1,4 @@
-package com.linguity.app.ui.spelling_quiz.view_model
+package com.linguity.app.ui.pronunciation_checker.view_model
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -11,18 +11,19 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SpellingListViewModel(private val repository: Repository) : ViewModel() {
-    private val _spellingList = MutableLiveData<List<Quiz>>()
+class PronunciationListViewModel(private val repository: Repository) : ViewModel() {
+
+    private val _pronunciationList = MutableLiveData<List<Quiz>>()
     private val _isLoading = MutableLiveData<Boolean>()
     private val _toastText = MutableLiveData<String>()
 
-    val spellingList: LiveData<List<Quiz>> = _spellingList
+    val pronunciationList: LiveData<List<Quiz>> = _pronunciationList
     val isLoading: LiveData<Boolean> = _isLoading
     val toastText: LiveData<String> = _toastText
 
-    fun getSpellingListByLevel(level: String) {
+    fun getPronunciationListByLevel(level: String) {
         _isLoading.value = true
-        repository.getSpellingListByLevel(level)
+        repository.getPronunciationListByLevel(level)
             .enqueue(object : Callback<ResponseQuizList> {
                 override fun onResponse(
                     call: Call<ResponseQuizList>,
@@ -31,7 +32,7 @@ class SpellingListViewModel(private val repository: Repository) : ViewModel() {
                     val responseBody = response.body()
                     if (response.isSuccessful) {
                         responseBody?.row.let {
-                            _spellingList.value = it
+                            _pronunciationList.value = it
                             Log.d("PronunciationViewModel", it.toString())
                         }
                         _isLoading.value = false

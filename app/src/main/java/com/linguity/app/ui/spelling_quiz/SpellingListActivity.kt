@@ -49,9 +49,9 @@ class SpellingListActivity : AppCompatActivity() {
     private fun setDataAdapter(quizzes: List<Quiz>) {
 
         /*
-            TODO: Update Adapter to load List<Quiz>
+            TODO: Update ItemAdapter to load List<Quiz>
             val listQuiz = quizzes
-             adapter = ItemAdapter(this@SpellingListActivity, listQuiz)
+            adapter = ItemAdapter(this@SpellingListActivity, listQuiz)
          */
 
         val fruits = arrayOf("Apple", "Banana", "Orange", "Mango", "Grapes")

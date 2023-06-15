@@ -2,7 +2,7 @@ package com.linguity.app.api.responses
 
 import com.google.gson.annotations.SerializedName
 
-data class ResponseSpelling(
+data class ResponseQuizList(
 
 	@field:SerializedName("msg")
 	val msg: String? = null,

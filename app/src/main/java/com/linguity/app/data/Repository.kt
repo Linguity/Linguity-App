@@ -6,7 +6,7 @@ import com.linguity.app.api.requests.LoginRequest
 import com.linguity.app.api.requests.RegisterRequest
 import com.linguity.app.api.responses.ResponseLogin
 import com.linguity.app.api.responses.ResponseRegister
-import com.linguity.app.api.responses.ResponseSpelling
+import com.linguity.app.api.responses.ResponseQuizList
 import retrofit2.Call
 
 class Repository(
@@ -21,8 +21,12 @@ class Repository(
         return apiService.register(registerRequest)
     }
 
-    fun getSpellingListByLevel(level: String): Call<ResponseSpelling> {
+    fun getSpellingListByLevel(level: String): Call<ResponseQuizList> {
         return apiService.getSpellingListByLevel(level)
+    }
+
+    fun getPronunciationListByLevel(level: String): Call<ResponseQuizList> {
+        return apiService.getPronunciationListByLevel(level)
     }
 
     fun logout() {
