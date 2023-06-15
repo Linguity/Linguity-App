@@ -7,6 +7,7 @@ import com.linguity.app.di.Injection
 import com.linguity.app.ui.login.LoginViewModel
 import com.linguity.app.ui.main.MainViewModel
 import com.linguity.app.ui.register.RegisterViewModel
+import com.linguity.app.ui.spelling_quiz.view_model.SpellingListViewModel
 import com.linguity.app.ui.splash.SplashViewModel
 
 class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
@@ -22,6 +23,8 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
             return SplashViewModel(Injection.provideRepository(context)) as T
         } else if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
             return MainViewModel(Injection.provideRepository(context)) as T
+        } else if (modelClass.isAssignableFrom(SpellingListViewModel::class.java)) {
+            return SpellingListViewModel(Injection.provideRepository(context)) as T
         }
 
         throw IllegalArgumentException("Unknown ViewModel class ${modelClass.name}")

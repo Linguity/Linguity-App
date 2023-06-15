@@ -32,9 +32,26 @@ class SpellingActivity : AppCompatActivity() {
         binding.apply {
             cvSBeginner.setOnClickListener {
                 Intent(this@SpellingActivity, SpellingListActivity::class.java).also {
+                    it.putExtra(LEVEL_EXTRA, "beginner")
+                    startActivity(it)
+                }
+            }
+            cvSIntermediate.setOnClickListener {
+                Intent(this@SpellingActivity, SpellingListActivity::class.java).also {
+                    it.putExtra(LEVEL_EXTRA, "intermediate")
+                    startActivity(it)
+                }
+            }
+            cvSAdvance.setOnClickListener {
+                Intent(this@SpellingActivity, SpellingListActivity::class.java).also {
+                    it.putExtra(LEVEL_EXTRA, "advance")
                     startActivity(it)
                 }
             }
         }
+    }
+
+    companion object {
+        private const val LEVEL_EXTRA = "level"
     }
 }
