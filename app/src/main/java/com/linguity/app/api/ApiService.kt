@@ -2,9 +2,10 @@ package com.linguity.app.api
 
 import com.linguity.app.api.requests.LoginRequest
 import com.linguity.app.api.requests.RegisterRequest
+import com.linguity.app.api.responses.ResponseEnglishLearning
 import com.linguity.app.api.responses.ResponseLogin
-import com.linguity.app.api.responses.ResponseRegister
 import com.linguity.app.api.responses.ResponseQuizList
+import com.linguity.app.api.responses.ResponseRegister
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -31,4 +32,7 @@ interface ApiService {
     fun getPronunciationListByLevel(
         @Path("level") level: String
     ): Call<ResponseQuizList>
+
+    @GET("listArticle")
+    fun getArticleList(): Call<ResponseEnglishLearning>
 }
