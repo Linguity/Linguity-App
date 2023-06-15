@@ -1,12 +1,17 @@
 package com.linguity.app.ui.pronunciation_checker
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.linguity.app.R
+import android.os.Bundle
+import com.linguity.app.databinding.ActivityPronunciationResultBinding
 
 class PronunciationResultActivity : AppCompatActivity() {
+
+    private val binding by lazy {
+        ActivityPronunciationResultBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pronunciation_result)
+        setContentView(binding.root)
     }
 }
