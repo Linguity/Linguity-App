@@ -11,12 +11,15 @@ import com.linguity.app.databinding.ItemWordBinding
 
 class ItemAdapter(
     val context: Context,
-    private val words: Array<String>) : RecyclerView.Adapter<ItemAdapter.MyHolder>() {
+    private val words: Array<String>
+) : RecyclerView.Adapter<ItemAdapter.MyHolder>() {
 
     private var onItemClickCallback: OnItemClickCallback? = null
+
     interface OnItemClickCallback {
         fun onItemClicked(id: String)
     }
+
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
@@ -36,7 +39,7 @@ class ItemAdapter(
             }
             binding.apply {
                 tvItem.text = words[position]
-                if (words[position] != "Apple"){
+                if (words[position] != "Apple") {
                     cvItem.isClickable = false
                     cvItem.setCardBackgroundColor(bC)
                     ivItem.isVisible = false

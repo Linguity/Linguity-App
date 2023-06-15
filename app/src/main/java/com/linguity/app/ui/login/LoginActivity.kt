@@ -7,7 +7,10 @@ import android.text.style.UnderlineSpan
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.text.toSpannable
+import androidx.core.util.Pair
+import androidx.core.view.isVisible
 import com.linguity.app.R
 import com.linguity.app.databinding.ActivityLoginBinding
 import com.linguity.app.helper.ViewModelFactory
@@ -20,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private val viewModel: LoginViewModel by viewModels {
-        ViewModelFactory()
+        ViewModelFactory(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +42,14 @@ class LoginActivity : AppCompatActivity() {
         viewModel.isSucceed.observe(this) { isSucceed ->
             if (isSucceed) {
                 Intent(this, MainActivity::class.java).also {
+                    val username = binding.edLoginEmail.text.toString()
+
+                    it.putExtra(
+                        "userName",
+                        username
+                    )
+                    viewModel.saveSignedInUserName(username)
+
                     startActivity(it)
                 }
 
@@ -50,18 +61,23 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
+
+        viewModel.isLoading.observe(this) {
+            binding.cvLoading.isVisible = it
+        }
     }
 
     private fun setComponentsOnClickListener() {
         binding.apply {
             btnSignIn.setOnClickListener {
-                val email = edLoginEmail.text.toString()
-                val password = edLoginPassword.text.toString()
-
-                if (email.isNotEmpty() && password.isNotEmpty()) {
-                    viewModel.login(email, password)
+                
+                if (!edLoginEmail.error.isNullOrEmpty() && !edLoginPassword.error.isNullOrEmpty()) {
+                    showToast(getString(R.string.empty_field_message))
                 } else {
-                    showToast("All fields must be filled.")
+                    val email = edLoginEmail.text.toString()
+                    val password = edLoginPassword.text.toString()
+
+                    viewModel.login(email, password)
                 }
             }
 
@@ -79,9 +95,16 @@ class LoginActivity : AppCompatActivity() {
                 text = textResourceUnderline
 
                 setOnClickListener {
-                    Intent(this@LoginActivity, RegisterActivity::class.java).also {
-                        startActivity(it)
-                    }
+                    val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+
+                    val optionsCompat = ActivityOptionsCompat
+                        .makeSceneTransitionAnimation(
+                            this@LoginActivity,
+                            Pair(binding.edLoginEmail, "email"),
+                            Pair(binding.edLoginPassword, "password")
+                        ).toBundle()
+
+                    startActivity(intent, optionsCompat)
                 }
             }
         }
