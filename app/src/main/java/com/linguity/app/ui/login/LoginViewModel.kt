@@ -13,11 +13,14 @@ import retrofit2.Response
 class LoginViewModel(private val repository: Repository) : ViewModel() {
     private val _toastText = MutableLiveData<String>()
     private val _isSucceed = MutableLiveData<Boolean>()
+    private val _isLoading = MutableLiveData<Boolean>()
 
     val toastText: LiveData<String> = _toastText
     val isSucceed: LiveData<Boolean> = _isSucceed
+    val isLoading: LiveData<Boolean> = _isLoading
 
     fun login(email: String, password: String) {
+        _isLoading.value = true
         val request = LoginRequest(email, password)
         repository.login(request)
             .enqueue(object : Callback<ResponseLogin> {
@@ -31,8 +34,10 @@ class LoginViewModel(private val repository: Repository) : ViewModel() {
                             _toastText.value = it
                         }
                         _isSucceed.value = true
+                        _isLoading.value = false
                     } else {
                         _toastText.value = "Failed: Invalid email or password"
+                        _isLoading.value = false
                     }
 
                     /*
@@ -42,8 +47,13 @@ class LoginViewModel(private val repository: Repository) : ViewModel() {
 
                 override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {
                     _toastText.value = "Failed: ${t.message}"
+                    _isLoading.value = false
                 }
 
             })
+    }
+
+    fun saveSignedInUserName(username: String) {
+        repository.saveSignedInUserName(username)
     }
 }
