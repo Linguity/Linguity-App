@@ -38,7 +38,6 @@ class PronunciationListActivity : AppCompatActivity() {
         viewModel.pronunciationList.observe(this) {
             observeAdapter(it)
         }
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

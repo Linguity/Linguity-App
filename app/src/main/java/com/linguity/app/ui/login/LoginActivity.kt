@@ -70,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
     private fun setComponentsOnClickListener() {
         binding.apply {
             btnSignIn.setOnClickListener {
-                
+
                 if (!edLoginEmail.error.isNullOrEmpty() && !edLoginPassword.error.isNullOrEmpty()) {
                     showToast(getString(R.string.empty_field_message))
                 } else {

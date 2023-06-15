@@ -4,9 +4,10 @@ import android.content.SharedPreferences
 import com.linguity.app.api.ApiService
 import com.linguity.app.api.requests.LoginRequest
 import com.linguity.app.api.requests.RegisterRequest
+import com.linguity.app.api.responses.ResponseEnglishLearning
 import com.linguity.app.api.responses.ResponseLogin
-import com.linguity.app.api.responses.ResponseRegister
 import com.linguity.app.api.responses.ResponseQuizList
+import com.linguity.app.api.responses.ResponseRegister
 import retrofit2.Call
 
 class Repository(
@@ -27,6 +28,10 @@ class Repository(
 
     fun getPronunciationListByLevel(level: String): Call<ResponseQuizList> {
         return apiService.getPronunciationListByLevel(level)
+    }
+
+    fun getArticleList(): Call<ResponseEnglishLearning> {
+        return apiService.getArticleList()
     }
 
     fun logout() {
