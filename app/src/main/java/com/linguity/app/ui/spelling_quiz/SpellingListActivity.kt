@@ -47,15 +47,7 @@ class SpellingListActivity : AppCompatActivity() {
     }
 
     private fun setDataAdapter(quizzes: List<Quiz>) {
-
-        /*
-            TODO: Update ItemAdapter to load List<Quiz>
-            val listQuiz = quizzes
-            adapter = ItemAdapter(this@SpellingListActivity, listQuiz)
-         */
-
-        val fruits = arrayOf("Apple", "Banana", "Orange", "Mango", "Grapes")
-        adapter = ItemAdapter(this@SpellingListActivity, fruits)
+        adapter = ItemAdapter(this@SpellingListActivity, quizzes)
         binding.apply {
             rcSpellingList.setHasFixedSize(true)
             rcSpellingList.adapter = adapter
