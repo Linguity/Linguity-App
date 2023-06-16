@@ -24,10 +24,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val userName = intent.getStringExtra("userName")
-
-        binding.tvUsername.text = userName
-
         setComponentsOnClickListener()
         setNavigation()
         observeViewModel()
@@ -52,6 +48,10 @@ class MainActivity : AppCompatActivity() {
                 it,
                 Toast.LENGTH_SHORT
             ).show()
+        }
+
+        viewModel.username.observe(this) {
+            binding.tvUsername.text = it
         }
     }
 

@@ -33,16 +33,17 @@ class LoginViewModel(private val repository: Repository) : ViewModel() {
                         responseBody?.msg.let {
                             _toastText.value = it
                         }
+
+                        responseBody?.email?.let {
+                            saveSignedInUserName(it)
+                        }
+
                         _isSucceed.value = true
                         _isLoading.value = false
                     } else {
                         _toastText.value = "Failed: Invalid email or password"
                         _isLoading.value = false
                     }
-
-                    /*
-                        TODO: responseBody.tokenId
-                     */
                 }
 
                 override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {

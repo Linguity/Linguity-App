@@ -42,14 +42,6 @@ class LoginActivity : AppCompatActivity() {
         viewModel.isSucceed.observe(this) { isSucceed ->
             if (isSucceed) {
                 Intent(this, MainActivity::class.java).also {
-                    val username = binding.edLoginEmail.text.toString()
-
-                    it.putExtra(
-                        "userName",
-                        username
-                    )
-                    viewModel.saveSignedInUserName(username)
-
                     startActivity(it)
                 }
 
