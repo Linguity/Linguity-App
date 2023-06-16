@@ -70,4 +70,4 @@ The following are the team members involved in the development of this project:
 * Android Device or Android Emulator
 
 ## Apk File Download
-TBA
+https://github.com/Linguity/Linguity-App/releases/tag/1.0.0-Alpha
