@@ -7,11 +7,12 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.linguity.app.R
+import com.linguity.app.api.responses.Quiz
 import com.linguity.app.databinding.ItemWordBinding
 
 class ItemAdapter(
     val context: Context,
-    private val words: Array<String>
+    private val words: List<Quiz>
 ) : RecyclerView.Adapter<ItemAdapter.MyHolder>() {
 
     private var onItemClickCallback: OnItemClickCallback? = null
@@ -32,16 +33,19 @@ class ItemAdapter(
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
+        val (id, text, is_open, is_answered) = words[position]
         val bC = ContextCompat.getColor(context, R.color.linguity_disable)
         holder.apply {
             binding.root.setOnClickListener {
-                onItemClickCallback?.onItemClicked(words[position])
+                onItemClickCallback?.onItemClicked(id.toString())
             }
             binding.apply {
-                tvItem.text = words[position]
-                if (words[position] != "Apple") {
+                tvItem.text = text
+                if (is_open == 0) {
                     cvItem.isClickable = false
                     cvItem.setCardBackgroundColor(bC)
+                }
+                if (is_answered == 0) {
                     ivItem.isVisible = false
                 }
             }

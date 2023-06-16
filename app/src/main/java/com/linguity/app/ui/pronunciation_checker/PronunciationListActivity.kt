@@ -46,13 +46,7 @@ class PronunciationListActivity : AppCompatActivity() {
     }
 
     private fun observeAdapter(quizzes: List<Quiz>) {
-        /*
-            TODO: Update ItemAdapter to load List<Quiz>
-            val listQuiz = quizzes
-            adapter = ItemAdapter(this@PronunciationListActivity, listQuiz)
-         */
-        val fruits = arrayOf("Apple", "Banana", "Orange", "Mango", "Grapes")
-        adapter = ItemAdapter(this@PronunciationListActivity, fruits)
+        adapter = ItemAdapter(this@PronunciationListActivity, quizzes)
         binding.apply {
             rcPronunciationList.setHasFixedSize(true)
             rcPronunciationList.adapter = adapter
