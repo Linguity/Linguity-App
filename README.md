@@ -53,7 +53,7 @@ The following are the team members involved in the development of this project:
 - [x] [Kotlin](https://kotlinlang.org/)
 - [x] [Retrofit](https://square.github.io/retrofit/)
 - [x] [Glide](https://github.com/bumptech/glide)
-- [x] [MediaRecorder]([https://developer.android.com/training/camerax](https://developer.android.com/guide/topics/media/mediarecorder?hl=id))
+- [x] [MediaRecorder](https://developer.android.com/guide/topics/media/mediarecorder?hl=id)
 
 ## Features
 - [x] SplashScreen
