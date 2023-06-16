@@ -9,15 +9,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import android.Manifest
-import android.app.Activity
 import android.content.ContextWrapper
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.os.Build
 import android.os.Environment
+import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import com.linguity.app.R
+import com.linguity.app.api.responses.Quiz
 import com.linguity.app.databinding.ActivityPronunciationSubmitBinding
+import com.linguity.app.helper.ViewModelFactory
+import com.linguity.app.ui.pronunciation_checker.view_model.PronunciationSubmitViewModel
 import java.io.File
 import java.lang.Exception
 import java.text.SimpleDateFormat
@@ -29,14 +32,18 @@ class PronunciationSubmitActivity : AppCompatActivity(), TextToSpeech.OnInitList
     private val binding by lazy {
         ActivityPronunciationSubmitBinding.inflate(layoutInflater)
     }
-
+    private val viewModel: PronunciationSubmitViewModel by viewModels {
+        ViewModelFactory(this)
+    }
     private val textToSpeech by lazy {
         TextToSpeech(this@PronunciationSubmitActivity, this)
     }
 
     private var mediaRecorder: MediaRecorder? = null
     private lateinit var mediaPlayer: MediaPlayer
-    private var filePath: String? = null
+
+    private var quiz: Quiz? = null
+    private var fileAudio: File? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,14 +52,40 @@ class PronunciationSubmitActivity : AppCompatActivity(), TextToSpeech.OnInitList
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = stringAB
         val stringWords = intent.getStringExtra(EXTRA_ID)
+
+        quiz = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra(EXTRA_QUIZ, Quiz::class.java)
+        } else {
+            intent.getParcelableExtra(EXTRA_QUIZ)
+        }
+
         setSpeakWords(stringWords.toString())
         setHide()
         setAction()
+        observeViewModel()
 
         if (isMicrophonePresent()) {
             getMicrophonePermission()
         }
 
+    }
+
+    private fun observeViewModel() {
+        viewModel.isSuccess.observe(this) {
+            if (it) {
+                viewModel.status.observe(this) { status ->
+                    Intent(
+                        this@PronunciationSubmitActivity,
+                        PronunciationResultActivity::class.java
+                    ).also { intent ->
+                        intent.putExtra("status", status)
+                        startActivity(intent)
+                    }
+                    finish()
+                }
+            }
+
+        }
     }
 
     private fun getMicrophonePermission() {
@@ -138,6 +171,7 @@ class PronunciationSubmitActivity : AppCompatActivity(), TextToSpeech.OnInitList
 
                 btnPlay.isEnabled = true
                 btnPSRecord.isEnabled = false
+                setVisible()
 
                 Toast.makeText(this@PronunciationSubmitActivity, "Recording stopped...", Toast.LENGTH_SHORT).show()
             }
@@ -145,26 +179,24 @@ class PronunciationSubmitActivity : AppCompatActivity(), TextToSpeech.OnInitList
             btnPlay.setOnClickListener {
                 try {
                     mediaPlayer = MediaPlayer()
-                    mediaPlayer.setDataSource(filePath)
+                    mediaPlayer.setDataSource(fileAudio?.absolutePath)
                     mediaPlayer.prepare()
                     mediaPlayer.start()
 
                     Toast.makeText(this@PronunciationSubmitActivity, "Recording playing...", Toast.LENGTH_SHORT).show()
-                    binding.tvFilePath.text = filePath
-
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
             }
 
             btnPSSubmit.setOnClickListener {
-                Intent(
-                    this@PronunciationSubmitActivity,
-                    PronunciationResultActivity::class.java
-                ).also {
-                    startActivity(it)
+                if (quiz != null && fileAudio != null) {
+                    quiz?.id?.let { id ->
+                        fileAudio?.let { file ->
+                            viewModel.postAnswer(id, file)
+                        }
+                    }
                 }
-                finish()
             }
         }
     }
@@ -176,7 +208,7 @@ class PronunciationSubmitActivity : AppCompatActivity(), TextToSpeech.OnInitList
         val musicDirectory = ContextWrapper(applicationContext).getExternalFilesDir(Environment.DIRECTORY_MUSIC)
         val file = File(musicDirectory, "linguity$dateFormat.wav")
 
-        filePath = file.absolutePath
+        fileAudio = file
 
         return file.absolutePath
     }
@@ -195,6 +227,7 @@ class PronunciationSubmitActivity : AppCompatActivity(), TextToSpeech.OnInitList
 
     companion object {
         const val EXTRA_ID = "extra_id"
+        private const val EXTRA_QUIZ = "quiz"
         private const val MICROPHONE_PERMISSION_CODE = 200
     }
 }

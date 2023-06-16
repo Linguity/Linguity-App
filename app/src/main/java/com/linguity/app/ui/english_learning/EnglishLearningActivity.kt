@@ -3,6 +3,7 @@ package com.linguity.app.ui.english_learning
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.linguity.app.R
@@ -31,8 +32,15 @@ class EnglishLearningActivity : AppCompatActivity() {
 
         binding.rvArticle.layoutManager = LinearLayoutManager(this)
 
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
         viewModel.articleList.observe(this) {
             setDataAdapter(it)
+        }
+        viewModel.isLoading.observe(this) {
+            binding.cvLoading.isVisible = it
         }
     }
 

@@ -2,11 +2,16 @@ package com.linguity.app.ui.english_learning
 
 import android.os.Build
 import android.os.Bundle
+import android.text.Html
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.linguity.app.R
 import com.linguity.app.api.responses.Article
 import com.linguity.app.databinding.ActivityEnglishLearningDetailBinding
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.net.HttpURLConnection
+import java.net.URL
 
 class EnglishLearningDetailActivity : AppCompatActivity() {
 
@@ -42,7 +47,32 @@ class EnglishLearningDetailActivity : AppCompatActivity() {
 
         binding.tvDetailTitle.text = article.title
 
-//        binding.tvDetailContent.text = article.content
+        binding.tvDetailContent.text = Html.fromHtml(
+            article.content?.let { getHtmlFromUrl(it) },
+            Html.FROM_HTML_MODE_LEGACY
+        )
+    }
+
+    private fun getHtmlFromUrl(urlString: String): String {
+        val url = URL(urlString)
+        val connection = url.openConnection() as HttpURLConnection
+        connection.connectTimeout = 10000
+        connection.readTimeout = 10000
+
+        try {
+            val inputStream = connection.inputStream
+            val bufferedReader = BufferedReader(InputStreamReader(inputStream))
+            val stringBuilder = StringBuilder()
+            var line: String?
+
+            while (bufferedReader.readLine().also { line = it } != null) {
+                stringBuilder.append(line)
+            }
+
+            return stringBuilder.toString()
+        } finally {
+            connection.disconnect()
+        }
     }
 
     companion object {

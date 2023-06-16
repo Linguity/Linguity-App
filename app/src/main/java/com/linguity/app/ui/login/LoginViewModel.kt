@@ -34,7 +34,7 @@ class LoginViewModel(private val repository: Repository) : ViewModel() {
                             _toastText.value = it
                         }
 
-                        responseBody?.email?.let {
+                        responseBody?.name?.let {
                             saveSignedInUserName(it)
                         }
 

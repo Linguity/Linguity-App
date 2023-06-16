@@ -94,15 +94,6 @@
         tools:fontFamily="@font/poppins"
         tools:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tv_file_path"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="file"
-        app:layout_constraintEnd_toEndOf="@+id/btnPlay"
-        app:layout_constraintStart_toStartOf="@+id/btnPlay"
-        app:layout_constraintTop_toBottomOf="@+id/btnPlay" />
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cvPSSubmit"
         android:layout_width="match_parent"
