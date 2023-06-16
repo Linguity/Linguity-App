@@ -6,8 +6,10 @@ import com.linguity.app.api.requests.LoginRequest
 import com.linguity.app.api.requests.RegisterRequest
 import com.linguity.app.api.responses.ResponseEnglishLearning
 import com.linguity.app.api.responses.ResponseLogin
+import com.linguity.app.api.responses.ResponsePronunciationPredict
 import com.linguity.app.api.responses.ResponseQuizList
 import com.linguity.app.api.responses.ResponseRegister
+import okhttp3.MultipartBody
 import retrofit2.Call
 
 class Repository(
@@ -34,6 +36,14 @@ class Repository(
         return apiService.getArticleList()
     }
 
+    fun checkPronunciation(id: Int,file: MultipartBody.Part): Call<ResponsePronunciationPredict> {
+        return apiService.checkPronunciation(getToken(),file, id)
+    }
+
+    private fun getToken(): String {
+        return "Bearer ${sharedPreferences.getString(TOKEN_KEY, "")}"
+    }
+
     fun logout() {
         sharedPreferences
             .edit()
@@ -56,6 +66,7 @@ class Repository(
 
     companion object {
         private const val USERNAME_KEY = "signed_in_user"
+        private const val TOKEN_KEY = "token"
 
         @Volatile
         private var instance: Repository? = null
