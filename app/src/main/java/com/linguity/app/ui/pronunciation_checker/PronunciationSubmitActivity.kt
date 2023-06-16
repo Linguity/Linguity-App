@@ -21,6 +21,9 @@ import com.linguity.app.api.responses.Quiz
 import com.linguity.app.databinding.ActivityPronunciationSubmitBinding
 import com.linguity.app.helper.ViewModelFactory
 import com.linguity.app.ui.pronunciation_checker.view_model.PronunciationSubmitViewModel
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 import java.lang.Exception
 import java.text.SimpleDateFormat
@@ -204,12 +207,9 @@ class PronunciationSubmitActivity : AppCompatActivity(), TextToSpeech.OnInitList
     private fun getRecordingPath(): String {
         val simpleDateFormat = SimpleDateFormat("yyyy.MM.dd_hh.mm.ss", Locale.getDefault())
         val dateFormat = simpleDateFormat.format(Date())
-
         val musicDirectory = ContextWrapper(applicationContext).getExternalFilesDir(Environment.DIRECTORY_MUSIC)
         val file = File(musicDirectory, "linguity$dateFormat.wav")
-
         fileAudio = file
-
         return file.absolutePath
     }
 

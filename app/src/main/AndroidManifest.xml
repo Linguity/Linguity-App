@@ -53,7 +53,7 @@
             android:theme="@style/Theme.Linguity.ActionBar" />
         <activity
             android:name=".ui.pronunciation_checker.PronunciationResultActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".ui.spelling_quiz.SpellingActivity"
             android:exported="false"
@@ -68,10 +68,10 @@
             android:theme="@style/Theme.Linguity.ActionBar" />
         <activity
             android:name=".ui.spelling_quiz.SpellingResultActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".ui.main.MainActivity"
-            android:exported="false"></activity>
+            android:exported="false"/>
     </application>
 
 </manifest>
