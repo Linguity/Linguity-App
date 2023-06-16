@@ -18,7 +18,7 @@
     <string name="pronunciation_btn_play">Play</string>
     <string name="pronunciation_btn_submit">Submit Pronunciation</string>
     <string name="pronunciation_btn_try">Try Again</string>
-    <string name="pronunciation_btn_next">Next Word</string>
+    <string name="pronunciation_btn_next">Back to word</string>
     <string name="spelling_quiz">Spelling Quiz</string>
     <string name="spelling_quiz_page_title">Spelling Exercise</string>
     <string name="spelling_quiz_level">Choose your level</string>
@@ -31,7 +31,7 @@
     <string name="spelling_btn_play">Play</string>
     <string name="spelling_btn_submit">Submit Spelling</string>
     <string name="spelling_btn_try">Try Again</string>
-    <string name="spelling_btn_next">Next Word</string>
+    <string name="spelling_btn_next">Back to word</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="sign_in">Sign In</string>

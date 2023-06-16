@@ -66,6 +66,34 @@
         tools:fontFamily="@font/poppins"
         tools:textStyle="bold" />
 
+    <Button
+        android:id="@+id/btnStopRecord2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/linguity_secondary"
+        android:text="@string/stop"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSSRecord"
+        tools:fontFamily="@font/poppins"
+        tools:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnPlay2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/linguity_secondary"
+        android:text="@string/play"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnStopRecord2"
+        tools:fontFamily="@font/poppins"
+        tools:textStyle="bold" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cvSSSubmit"
         android:layout_width="match_parent"
