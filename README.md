@@ -1,8 +1,8 @@
 # Mobile-Development (Linguity)
 
-<h1 align="center">
+<p align="center">
   <img align="center" src="https://raw.githubusercontent.com/Linguity/.github/main/assets/linguity_logo_title_rectangle.jpg"  width="500"></img>
-<br>
+</p>
 
 ## About This App
 The Linguity app is an app that can help users develop a better English pronunciation. We decided to create a solution to this problem by developing a mobile application that mainly uses voice to learn the English language. We will make an application that makes it easier for users to learn English to improve their pronunciation starting from beginner. Because we make applications for beginners so it can improve pronunciation and make them perfect.
