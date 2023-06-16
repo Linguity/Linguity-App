@@ -1,7 +1,10 @@
 package com.linguity.app.api.responses
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Quiz(
 
     @field:SerializedName("is_open")
@@ -15,4 +18,4 @@ data class Quiz(
 
     @field:SerializedName("is_answered")
     val isAnswered: Int? = null
-)
+) : Parcelable

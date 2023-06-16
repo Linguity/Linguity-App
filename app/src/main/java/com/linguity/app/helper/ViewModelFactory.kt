@@ -8,6 +8,7 @@ import com.linguity.app.ui.english_learning.view_model.EnglishLearningViewModel
 import com.linguity.app.ui.login.LoginViewModel
 import com.linguity.app.ui.main.MainViewModel
 import com.linguity.app.ui.pronunciation_checker.view_model.PronunciationListViewModel
+import com.linguity.app.ui.pronunciation_checker.view_model.PronunciationSubmitViewModel
 import com.linguity.app.ui.register.RegisterViewModel
 import com.linguity.app.ui.spelling_quiz.view_model.SpellingListViewModel
 import com.linguity.app.ui.splash.SplashViewModel
@@ -31,6 +32,8 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
             return PronunciationListViewModel(Injection.provideRepository(context)) as T
         } else if (modelClass.isAssignableFrom(EnglishLearningViewModel::class.java)) {
             return EnglishLearningViewModel(Injection.provideRepository(context)) as T
+        } else if (modelClass.isAssignableFrom(PronunciationSubmitViewModel::class.java)) {
+            return PronunciationSubmitViewModel(Injection.provideRepository(context)) as T
         }
 
         throw IllegalArgumentException("Unknown ViewModel class ${modelClass.name}")
