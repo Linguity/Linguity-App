@@ -1,10 +1,10 @@
 package com.linguity.app.ui.pronunciation_checker
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.linguity.app.R
 import com.linguity.app.databinding.ActivityPronunciationSubmitBinding
@@ -23,7 +23,7 @@ class PronunciationSubmitActivity : AppCompatActivity(), TextToSpeech.OnInitList
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        var stringAB: String = resources.getString(R.string.pronunciation_page_title)
+        val stringAB: String = resources.getString(R.string.pronunciation_page_title)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = stringAB
         val stringWords = intent.getStringExtra(EXTRA_ID)
@@ -54,7 +54,7 @@ class PronunciationSubmitActivity : AppCompatActivity(), TextToSpeech.OnInitList
         textToSpeech.shutdown()
     }
 
-    private fun setSpeakWords(speak: String){
+    private fun setSpeakWords(speak: String) {
         binding.apply {
             ivPSSpeak.setOnClickListener {
                 val text = speak
@@ -65,13 +65,16 @@ class PronunciationSubmitActivity : AppCompatActivity(), TextToSpeech.OnInitList
         }
     }
 
-    private fun setAction(){
+    private fun setAction() {
         binding.apply {
             btnPSRecord.setOnClickListener {
                 setVisible()
             }
-            btnPSSubmit.setOnClickListener{
-                Intent(this@PronunciationSubmitActivity, PronunciationResultActivity::class.java).also {
+            btnPSSubmit.setOnClickListener {
+                Intent(
+                    this@PronunciationSubmitActivity,
+                    PronunciationResultActivity::class.java
+                ).also {
                     startActivity(it)
                 }
                 finish()
@@ -79,19 +82,19 @@ class PronunciationSubmitActivity : AppCompatActivity(), TextToSpeech.OnInitList
         }
     }
 
-    private fun setHide(){
+    private fun setHide() {
         binding.apply {
             cvPSSubmit.isVisible = false
         }
     }
 
-    private fun setVisible(){
+    private fun setVisible() {
         binding.apply {
             cvPSSubmit.isVisible = true
         }
     }
 
-    companion object{
+    companion object {
         const val EXTRA_ID = "extra_id"
     }
 }

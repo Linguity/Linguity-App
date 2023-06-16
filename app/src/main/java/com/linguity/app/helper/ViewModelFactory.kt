@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.linguity.app.di.Injection
+import com.linguity.app.ui.english_learning.view_model.EnglishLearningViewModel
 import com.linguity.app.ui.login.LoginViewModel
 import com.linguity.app.ui.main.MainViewModel
 import com.linguity.app.ui.pronunciation_checker.view_model.PronunciationListViewModel
@@ -28,6 +29,8 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
             return SpellingListViewModel(Injection.provideRepository(context)) as T
         } else if (modelClass.isAssignableFrom(PronunciationListViewModel::class.java)) {
             return PronunciationListViewModel(Injection.provideRepository(context)) as T
+        } else if (modelClass.isAssignableFrom(EnglishLearningViewModel::class.java)) {
+            return EnglishLearningViewModel(Injection.provideRepository(context)) as T
         }
 
         throw IllegalArgumentException("Unknown ViewModel class ${modelClass.name}")
